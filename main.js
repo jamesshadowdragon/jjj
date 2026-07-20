@@ -1125,6 +1125,21 @@ Math.sin(t*.5)*.05;
 
 });
 
+  camera.position.x =
+THREE.MathUtils.clamp(
+camera.position.x,
+-5,
+5
+);
+
+
+camera.position.y =
+THREE.MathUtils.clamp(
+camera.position.y,
+-2,
+6
+);
+  
 composer.render();
 
 
