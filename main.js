@@ -970,6 +970,16 @@ Math.sin(t*3)*0.25;
 
 
 
+projectGroup.children.forEach(object=>{
+
+if(object.geometry instanceof THREE.BufferGeometry){
+
+object.rotation.y =
+Math.sin(t*.5)*.05;
+
+}
+
+});
 
 composer.render();
 
