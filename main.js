@@ -486,6 +486,104 @@ color:0x6366f1
 projects.forEach(
 (project,index)=>{
 
+const fontLoader = new FontLoader();
+
+fontLoader.load(
+"https://threejs.org/examples/fonts/helvetiker_regular.typeface.json",
+(font)=>{
+
+
+projects.forEach((project,index)=>{
+
+
+const textGeometry =
+new TextGeometry(
+project.name,
+{
+
+font:font,
+
+size:.35,
+
+depth:.05,
+
+curveSegments:12,
+
+bevelEnabled:true,
+
+bevelThickness:.01,
+
+bevelSize:.01,
+
+bevelSegments:3
+
+}
+);
+
+
+
+textGeometry.center();
+
+
+
+const textMaterial =
+new THREE.MeshPhysicalMaterial({
+
+color:0xffffff,
+
+emissive:0x8b5cf6,
+
+emissiveIntensity:.8,
+
+metalness:.5,
+
+roughness:.2
+
+});
+
+
+
+const text =
+new THREE.Mesh(
+textGeometry,
+textMaterial
+);
+
+
+
+text.position.set(
+
+(index-1.5)*3.5,
+
+Math.sin(index)*.8+1,
+
+-4
+
+);
+
+
+
+text.userData={
+
+speed:
+Math.random()*.5+.5,
+
+offset:
+Math.random()*5
+
+};
+
+
+
+projectGroup.add(text);
+
+
+
+});
+
+
+
+});
 
 const panel =
 new THREE.Mesh(
