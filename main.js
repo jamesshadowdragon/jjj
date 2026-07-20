@@ -863,6 +863,37 @@ cursorLight.position.z=4;
 });
 const clock = new THREE.Clock();
 
+document.querySelectorAll("nav a")
+.forEach(link=>{
+
+link.addEventListener(
+"click",
+()=>{
+
+const section =
+link
+.getAttribute("href")
+.replace("#","");
+
+
+if(section==="hero")
+moveCamera("hero");
+
+
+if(section==="projects")
+moveCamera("projects");
+
+
+if(section==="skills")
+moveCamera("skills");
+
+
+if(section==="contact")
+moveCamera("contact");
+
+});
+
+});
 
 function animate(){
 
