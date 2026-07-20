@@ -1263,6 +1263,22 @@ window.addEventListener(
 "load",
 ()=>{
 
+document
+.getElementById("viewProjects")
+.addEventListener(
+"click",
+()=>{
+
+moveCamera("projects");
+
+
+document
+.getElementById("projects")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+});
 
 const loading =
 document.getElementById(
