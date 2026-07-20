@@ -1187,27 +1187,41 @@ window.innerHeight
 
 
 
+let scrollTarget=0;
+
+
 window.addEventListener(
 "scroll",
 ()=>{
 
-
-const scroll =
+scrollTarget =
 window.scrollY;
 
-
-
-camera.position.z =
-10+
-scroll*.003;
-
-
-
-camera.rotation.z =
-scroll*.00015;
-
-
 });
+
+
+
+function updateScrollCamera(){
+
+
+camera.position.z +=
+(
+10 + scrollTarget*.003
+-
+camera.position.z
+)
+*.02;
+
+
+requestAnimationFrame(
+updateScrollCamera
+);
+
+
+}
+
+
+updateScrollCamera();
 
 
 
