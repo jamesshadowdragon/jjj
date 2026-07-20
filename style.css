@@ -142,6 +142,70 @@ text-shadow:
 }
 
 
+.cursor{
+
+position:fixed;
+
+width:18px;
+
+height:18px;
+
+border-radius:50%;
+
+background:#8b5cf6;
+
+pointer-events:none;
+
+z-index:99999;
+
+transform:translate(-50%,-50%);
+
+box-shadow:
+0 0 20px #8b5cf6,
+0 0 50px #8b5cf6;
+
+}
+
+
+.cursorGlow{
+
+position:fixed;
+
+width:80px;
+
+height:80px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(139,92,246,.35),
+transparent 70%
+);
+
+pointer-events:none;
+
+z-index:99998;
+
+transform:translate(-50%,-50%);
+
+filter:blur(10px);
+
+}
+
+
+
+@media(max-width:700px){
+
+.cursor,
+.cursorGlow{
+
+display:none;
+
+}
+
+}
 
 form{
 
