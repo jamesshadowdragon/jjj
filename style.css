@@ -201,3 +201,271 @@ border:2px solid var(--primary);
 .buttons button:hover{
 transform:translateY(-5px) scale(1.04);
 }
+.glass{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(24px);
+-webkit-backdrop-filter:blur(24px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+padding:40px;
+box-shadow:0 20px 60px rgba(0,0,0,.35),0 0 40px rgba(139,92,246,.15);
+transition:.35s;
+}
+
+.glass:hover{
+transform:translateY(-8px);
+box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 60px rgba(139,92,246,.35);
+}
+
+#about h2,
+#projects h2,
+#skills h2,
+#contact h2{
+font-size:52px;
+margin-bottom:40px;
+color:#fff;
+}
+
+#about p{
+font-size:18px;
+line-height:1.8;
+color:var(--muted);
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:28px;
+margin-top:30px;
+}
+
+.card{
+position:relative;
+padding:32px;
+border-radius:24px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+overflow:hidden;
+transition:.35s;
+cursor:pointer;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:220%;
+height:220%;
+background:radial-gradient(circle,rgba(139,92,246,.22),transparent 60%);
+opacity:0;
+transition:.4s;
+}
+
+.card:hover::before{
+opacity:1;
+}
+
+.card:hover{
+transform:translateY(-10px) rotateX(4deg);
+box-shadow:0 25px 60px rgba(139,92,246,.25);
+border-color:rgba(139,92,246,.4);
+}
+
+.card h3{
+font-size:26px;
+margin-bottom:14px;
+}
+
+.card p{
+color:var(--muted);
+line-height:1.7;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:22px;
+margin-top:25px;
+}
+
+.skills div{
+padding:22px;
+text-align:center;
+border-radius:18px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+font-weight:600;
+transition:.3s;
+}
+
+.skills div:hover{
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+transform:translateY(-8px) scale(1.04);
+box-shadow:0 0 35px rgba(139,92,246,.4);
+}
+
+.contactBox{
+max-width:700px;
+padding:40px;
+border-radius:28px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+}
+
+.contactBox p{
+color:var(--muted);
+margin-bottom:10px;
+}
+
+.contactBox h3{
+font-size:34px;
+margin-bottom:18px;
+}
+
+.contactBox a{
+display:inline-block;
+padding:14px 28px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#fff;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.contactBox a:hover{
+transform:translateY(-5px);
+box-shadow:0 0 35px rgba(139,92,246,.45);
+}
+
+footer{
+padding:60px 20px;
+text-align:center;
+color:var(--muted);
+border-top:1px solid rgba(255,255,255,.08);
+margin-top:80px;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-14px);
+}
+}
+
+@keyframes pulseGlow{
+0%,100%{
+box-shadow:0 0 25px rgba(139,92,246,.25);
+}
+50%{
+box-shadow:0 0 60px rgba(139,92,246,.55);
+}
+}
+
+.card,
+.glass,
+.skills div{
+animation:float 7s ease-in-out infinite;
+}
+
+.logo{
+animation:pulseGlow 3s infinite;
+}
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#080814;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(var(--primary),var(--secondary));
+border-radius:20px;
+}
+
+::selection{
+background:var(--primary);
+color:white;
+}
+
+@media(max-width:1000px){
+
+header{
+padding:18px 6%;
+}
+
+nav{
+gap:18px;
+}
+
+.heroContent h1{
+font-size:58px;
+}
+
+#about h2,
+#projects h2,
+#skills h2,
+#contact h2{
+font-size:40px;
+}
+
+section{
+padding:120px 8%;
+}
+
+}
+
+@media(max-width:700px){
+
+header{
+flex-direction:column;
+gap:20px;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.heroContent h1{
+font-size:44px;
+}
+
+.heroContent p{
+font-size:17px;
+}
+
+.buttons{
+flex-direction:column;
+width:100%;
+}
+
+.buttons button{
+width:100%;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.skills{
+grid-template-columns:1fr;
+}
+
+.contactBox{
+padding:28px;
+}
+
+}
