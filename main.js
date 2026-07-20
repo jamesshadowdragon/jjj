@@ -91,7 +91,23 @@ const core=new THREE.Mesh(
 geometry,
 material
 );
+const composer = new EffectComposer(renderer);
 
+composer.addPass(
+new RenderPass(scene,camera)
+);
+
+const bloom = new UnrealBloomPass(
+new THREE.Vector2(
+window.innerWidth,
+window.innerHeight
+),
+1.15,
+0.5,
+0.2
+);
+
+composer.addPass(bloom);
 scene.add(core);
 
 const ringGeometry=new THREE.TorusGeometry(
@@ -133,12 +149,26 @@ camera.aspect=window.innerWidth/window.innerHeight;
 
 camera.updateProjectionMatrix();
 
-renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setSize(
+window.innerWidth,
+window.innerHeight
+);
 
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setPixelRatio(
+Math.min(window.devicePixelRatio,2)
+);
+
+composer.setSize(
+window.innerWidth,
+window.innerHeight
+);
+
+bloom.setSize(
+window.innerWidth,
+window.innerHeight
+);
 
 });
-
 const clock=new THREE.Clock();
 
 function animate(){
