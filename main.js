@@ -193,7 +193,7 @@ camera.position.y+=((mouse.y*1.5)+2-camera.position.y)*.03;
 
 camera.lookAt(0,0,0);
 
-renderer.render(scene,camera);
+composer.render();
 
 }
 
