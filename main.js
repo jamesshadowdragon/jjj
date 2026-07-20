@@ -7,6 +7,8 @@ import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js"
 import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
 import { FontLoader } from "three/addons/loaders/FontLoader.js";
 
+import { gsap } from "three/addons/libs/gsap.module.js";
+
 const canvas = document.getElementById("bg");
 
 
@@ -28,12 +30,125 @@ window.innerWidth / window.innerHeight,
 1000
 );
 
-
 camera.position.set(
 0,
 2,
 10
 );
+
+
+// CINEMATIC CAMERA SYSTEM
+
+const cameraPositions = {
+
+hero:{
+position:{
+x:0,
+y:2,
+z:10
+},
+look:{
+x:0,
+y:0,
+z:0
+}
+},
+
+
+projects:{
+position:{
+x:0,
+y:3,
+z:6
+},
+look:{
+x:0,
+y:0,
+z:-4
+}
+},
+
+
+skills:{
+position:{
+x:5,
+y:4,
+z:8
+},
+look:{
+x:0,
+y:1,
+z:0
+}
+},
+
+
+contact:{
+position:{
+x:-4,
+y:2,
+z:7
+},
+look:{
+x:0,
+y:0,
+z:0
+}
+
+}
+
+};
+
+
+
+function moveCamera(section){
+
+const target =
+cameraPositions[section];
+
+
+if(!target) return;
+
+
+gsap.to(
+camera.position,
+{
+
+x:target.position.x,
+
+y:target.position.y,
+
+z:target.position.z,
+
+duration:2,
+
+ease:"power3.inOut"
+
+}
+
+);
+
+
+gsap.to(
+camera.rotation,
+{
+
+x:0,
+
+y:0,
+
+z:0,
+
+duration:2,
+
+ease:"power3.inOut"
+
+}
+
+);
+
+}
+
 
 
 
@@ -68,8 +183,6 @@ THREE.PCFSoftShadowMap;
 
 renderer.outputColorSpace=
 THREE.SRGBColorSpace;
-
-
 
 
 const composer = new EffectComposer(renderer);
